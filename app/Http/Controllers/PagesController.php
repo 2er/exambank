@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Subject;
 
 class PagesController extends Controller
 {
-    public function root()
+    public function __construct()
     {
-        return view('pages.root');
+        $this->middleware('auth', ['except' => ['permissionDenied']]);
+    }
+
+    public function root(Subject $subject)
+    {
+        $subjects = $subject->all();
+        return view('pages.root', compact('subjects'));
     }
 
     public function permissionDenied()

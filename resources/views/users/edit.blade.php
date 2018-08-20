@@ -6,7 +6,7 @@
         <div class="panel panel-default col-md-10 col-md-offset-1">
             <div class="panel-heading">
                 <h4>
-                    <i class="glyphicon glyphicon-edit"></i> 编辑个人资料
+                    <i class="glyphicon glyphicon-edit"></i> 修改账号
                 </h4>
             </div>
 
@@ -26,13 +26,13 @@
                         <label for="email-field">邮 箱</label>
                         <input class="form-control" type="text" name="email" id="email-field" value="{{ old('email', $user->email) }}" />
                     </div>
-                    <div class="form-group">
-                        <label for="introduction-field">个人简介</label>
-                        <textarea name="introduction" id="introduction-field" class="form-control" rows="3">{{ old('introduction', $user->introduction ) }}</textarea>
-                    </div>
+                    {{--<div class="form-group">--}}
+                        {{--<label for="introduction-field">个人简介</label>--}}
+                        {{--<textarea name="introduction" id="introduction-field" class="form-control" rows="3">{{ old('introduction', $user->introduction ) }}</textarea>--}}
+                    {{--</div>--}}
 
                     <div class="form-group">
-                        <label for="" class="avatar-label">用户头像</label>
+                        <label for="" class="avatar-label">头像</label>
                         <input type="file" name="avatar">
 
                         @if($user->avatar)

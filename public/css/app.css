@@ -8416,6 +8416,16 @@ body {
   color: inherit;
 }
 
+/* Root page */
+
+.root-title h1 {
+  text-align: center;
+}
+
+.root-select-area {
+  margin-top: 100px;
+}
+
 /* User register page */
 
 .register-page img.captcha {
