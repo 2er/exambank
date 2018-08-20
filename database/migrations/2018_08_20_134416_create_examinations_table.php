@@ -13,7 +13,7 @@ class CreateExaminationsTable extends Migration
             $table->string('file_path');
             $table->integer('subject_id')->unsigned()->index();
             $table->integer('hit_count')->unsigned()->default(0);
-            $table->timestamp('last_hitted_at');
+            $table->timestamp('last_hit_at');
             $table->timestamps();
         });
 	}

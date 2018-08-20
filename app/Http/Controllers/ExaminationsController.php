@@ -14,9 +14,9 @@ class ExaminationsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request, Examination $examination)
 	{
-		$examinations = Examination::with('subject')->paginate(30);
+	    $examinations = $examination->withOrder($request->order)->paginate(20);
 		return view('examinations.index', compact('examinations'));
 	}
 

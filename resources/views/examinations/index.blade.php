@@ -10,8 +10,8 @@
 
                 <div class="panel-heading">
                     <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="#">最新入库</a></li>
-                        <li role="presentation"><a href="#">最后抽中时间</a></li>
+                        <li class="{{ active_class( ! if_query('order', 'recent') ) }}"><a href="{{ Request::url() }}?order=default">最新入库</a></li>
+                        <li class="{{ active_class(if_query('order', 'recent')) }}"><a href="{{ Request::url() }}?order=recent">最后抽中时间</a></li>
                     </ul>
                 </div>
 
