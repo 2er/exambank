@@ -32,3 +32,5 @@ Route::resource('users','UsersController',['only' => ['show', 'update', 'edit']]
 Route::resource('examinations', 'ExaminationsController', ['only' => ['index', 'show']]);
 
 Route::resource('subjects', 'SubjectsController', ['only' => ['show']]);
+
+Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
