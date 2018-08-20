@@ -8417,33 +8417,39 @@ body {
   margin-bottom: 0px;
 }
 
-/* Topic Index Page */
+/* Examination Index Page */
 
-.subjects-index-page .subject-list .nav > li > a {
+.examinations-show-page .subject-list .nav > li > a,
+subjects-index-page .subject-list .nav > li > a {
   position: relative;
   display: block;
   padding: 5px 14px;
   font-size: 0.9em;
 }
 
-.subjects-index-page .subject-list a {
+.examinations-show-page .subject-list a,
+subjects-index-page .subject-list a {
   color: #444444;
 }
 
-.subjects-index-page .subject-list .meta {
+.examinations-show-page .subject-list .meta,
+subjects-index-page .subject-list .meta {
   font-size: 0.9em;
   color: #b3b3b3;
 }
 
-.subjects-index-page .subject-list .meta a {
+.examinations-show-page .subject-list .meta a,
+subjects-index-page .subject-list .meta a {
   color: #b3b3b3;
 }
 
-.subjects-index-page .subject-list .badge {
+.examinations-show-page .subject-list .badge,
+subjects-index-page .subject-list .badge {
   background-color: #d8d8d8;
 }
 
-.subjects-index-page .subject-list hr {
+.examinations-show-page .subject-list hr,
+subjects-index-page .subject-list hr {
   margin-top: 12px;
   margin-bottom: 12px;
   border: 0;

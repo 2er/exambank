@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '试卷列表')
+@section('title', isset($subject) ? $subject->name : '试卷列表')
 
 @section('content')
 
