@@ -1,61 +1,32 @@
 @extends('layouts.app')
 
+@section('title', '试卷列表')
+
 @section('content')
-<div class="container">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h1>
-                    <i class="glyphicon glyphicon-align-justify"></i> Examination
-                    <a class="btn btn-success pull-right" href="{{ route('examinations.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
-                </h1>
-            </div>
 
-            <div class="panel-body">
-                @if($examinations->count())
-                    <table class="table table-condensed table-striped">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th>Title</th> <th>File_path</th> <th>Subject_id</th> <th>Hit_count</th> <th>Last_hitted_at</th>
-                                <th class="text-right">OPTIONS</th>
-                            </tr>
-                        </thead>
+    <div class="row">
+        <div class="col-lg-9 col-md-9 topic-list">
+            <div class="panel panel-default">
 
-                        <tbody>
-                            @foreach($examinations as $examination)
-                                <tr>
-                                    <td class="text-center"><strong>{{$examination->id}}</strong></td>
+                <div class="panel-heading">
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active"><a href="#">最新入库</a></li>
+                        <li role="presentation"><a href="#">最后抽中时间</a></li>
+                    </ul>
+                </div>
 
-                                    <td>{{$examination->title}}</td> <td>{{$examination->file_path}}</td> <td>{{$examination->subject_id}}</td> <td>{{$examination->hit_count}}</td> <td>{{$examination->last_hitted_at}}</td>
-                                    
-                                    <td class="text-right">
-                                        <a class="btn btn-xs btn-primary" href="{{ route('examinations.show', $examination->id) }}">
-                                            <i class="glyphicon glyphicon-eye-open"></i> 
-                                        </a>
-                                        
-                                        <a class="btn btn-xs btn-warning" href="{{ route('examinations.edit', $examination->id) }}">
-                                            <i class="glyphicon glyphicon-edit"></i> 
-                                        </a>
-
-                                        <form action="{{ route('examinations.destroy', $examination->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete? Are you sure?');">
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="_method" value="DELETE">
-
-                                            <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {!! $examinations->render() !!}
-                @else
-                    <h3 class="text-center alert alert-info">Empty!</h3>
-                @endif
+                <div class="panel-body">
+                    {{-- 话题列表 --}}
+                    @include('examinations._examination_list', ['examinations' => $examinations])
+                    {{-- 分页 --}}
+                    {!! $examinations->appends(Request::except('page'))->render() !!}
+                </div>
             </div>
         </div>
+
+        <div class="col-lg-3 col-md-3 sidebar">
+            @include('examinations._sidebar')
+        </div>
     </div>
-</div>
 
 @endsection

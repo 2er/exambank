@@ -8417,3 +8417,36 @@ body {
   margin-bottom: 0px;
 }
 
+/* Topic Index Page */
+
+.subjects-index-page .subject-list .nav > li > a {
+  position: relative;
+  display: block;
+  padding: 5px 14px;
+  font-size: 0.9em;
+}
+
+.subjects-index-page .subject-list a {
+  color: #444444;
+}
+
+.subjects-index-page .subject-list .meta {
+  font-size: 0.9em;
+  color: #b3b3b3;
+}
+
+.subjects-index-page .subject-list .meta a {
+  color: #b3b3b3;
+}
+
+.subjects-index-page .subject-list .badge {
+  background-color: #d8d8d8;
+}
+
+.subjects-index-page .subject-list hr {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border: 0;
+  border-top: 1px solid #dcebf5;
+}
+

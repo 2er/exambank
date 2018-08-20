@@ -29,4 +29,4 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('users','UsersController',['only' => ['show', 'update', 'edit']]);
-Route::resource('examinations', 'ExaminationsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('examinations', 'ExaminationsController', ['only' => ['index', 'show']]);

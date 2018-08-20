@@ -16,7 +16,7 @@ class ExaminationsController extends Controller
 
 	public function index()
 	{
-		$examinations = Examination::paginate();
+		$examinations = Examination::with('subject')->paginate(30);
 		return view('examinations.index', compact('examinations'));
 	}
 
