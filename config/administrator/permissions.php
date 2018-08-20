@@ -8,7 +8,7 @@ return [
     'model'   => Permission::class,
 
     'permission' => function () {
-        return Auth::user()->can('manage_users');
+        return Auth::user()->can('用户与权限管理');
     },
 
     // 对 CRUD 动作的单独权限控制，通过返回布尔值来控制权限。

@@ -7,7 +7,7 @@ return [
     'permission'=> function()
     {
         // 只允许站长管理站点配置
-        return Auth::user()->hasRole('Founder');
+        return Auth::user()->hasRole('超级管理员');
     },
 
     // 站点配置的表单

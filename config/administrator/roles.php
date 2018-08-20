@@ -9,7 +9,7 @@ return [
 
     'permission'=> function()
     {
-        return Auth::user()->can('manage_users');
+        return Auth::user()->can('用户与权限管理');
     },
 
     'columns' => [
