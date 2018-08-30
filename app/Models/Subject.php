@@ -9,6 +9,11 @@ class Subject extends Model
 {
     protected $fillable = ['bn', 'name', 'subject_hour', 'introduction'];
 
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
     public function roundExaminationsGroupBySubjectIds($subject_ids)
     {
         $examinations = [];
@@ -24,5 +29,10 @@ class Subject extends Model
         }
 
         return $examinations;
+    }
+
+    public function getFullSubjectNameAttribute()
+    {
+        return "{$this->bn}/{$this->name}/{$this->subject_hour}";
     }
 }

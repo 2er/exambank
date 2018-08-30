@@ -38,7 +38,7 @@ return [
         'subject' => [
             'title'              => '课程',
             'type'               => 'relationship',
-            'name_field'         => 'name',
+            'name_field'         => 'full_subject_name',
             'search_fields'      => ["CONCAT(id, ' ', name)"],
             'options_sort_field' => 'id',
         ],
@@ -63,7 +63,7 @@ return [
         'subject' => [
             'title'              => '所属课程',
             'type'               => 'relationship',
-            'name_field'         => 'name',
+            'name_field'         => 'full_subject_name',
             'search_fields'      => array("CONCAT(id, ' ', name)"),
             'options_sort_field' => 'id',
         ],

@@ -60,6 +60,8 @@ return array(
      */
     'menu' => [
         '内容管理' => [
+            'departments',
+            'branches',
             'subjects',
             'examinations'
         ],
