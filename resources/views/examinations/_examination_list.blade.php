@@ -4,35 +4,15 @@
         @foreach ($examinations as $examination)
             <li class="media">
                 <div class="media-body">
-
-                    <div class="media-heading">
-                        <a href="{{ route('examinations.show', [$examination->id]) }}" title="{{ $examination->title }}">
-                            {{ $examination->title }}
-                        </a>
-                        <a class="pull-right" href="{{ route('examinations.show', [$examination->id]) }}" >
-                            <span class="badge"> {{ $examination->hit_count }} </span>
-                        </a>
-                    </div>
-
-                    <div class="media-body meta">
-
-                        <a href="#" title="{{ $examination->subject->bn }}">
-                            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-                            {{ $examination->subject->bn }}
-                        </a>
-
-                        <span> • </span>
-                        <a href="#" title="{{ $examination->subject->name }}">
-                            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-                            {{ $examination->subject->name }}
-                        </a>
-                        <span> • </span>
-                        <a href="#" title="{{ $examination->subject->subject_hour }}">
-                            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-                            {{ $examination->subject->subject_hour }}
-                        </a>
-                    </div>
-
+                    <a href="{{ route('examinations.show', [$examination->id]) }}" title="{{ $examination->title }}">
+                        {{ $examination->title }}
+                    </a>
+                    <a class="pull-right btn btn-primary btn-sm" href="{{ route('examinations.show', [$examination->id]) }}" role="button" >
+                        查看
+                    </a>
+                    <a style="margin-right: 10px;" class="pull-right btn btn-default btn-sm" href="{{ $examination->file_path }}" role="button" >
+                        下载
+                    </a>
                 </div>
             </li>
 

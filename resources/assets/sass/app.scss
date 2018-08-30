@@ -68,12 +68,10 @@ body {
 
 /* Root page */
 .root-title {
+  margin-bottom: 100px;
   h1 {
     text-align: center;
   }
-}
-.root-select-area {
-  margin-top: 100px;
 }
 
 /* User register page */
@@ -96,6 +94,9 @@ body {
 
 /* Examination Index Page */
 .examinations-show-page, subjects-index-page {
+  .root-select-area {
+    margin-top: 10px;
+  }
   .subject-list {
     .nav > li > a {
       position: relative;

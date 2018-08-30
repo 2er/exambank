@@ -8418,12 +8418,12 @@ body {
 
 /* Root page */
 
-.root-title h1 {
-  text-align: center;
+.root-title {
+  margin-bottom: 100px;
 }
 
-.root-select-area {
-  margin-top: 100px;
+.root-title h1 {
+  text-align: center;
 }
 
 /* User register page */
@@ -8441,6 +8441,11 @@ body {
 }
 
 /* Examination Index Page */
+
+.examinations-show-page .root-select-area,
+subjects-index-page .root-select-area {
+  margin-top: 10px;
+}
 
 .examinations-show-page .subject-list .nav > li > a,
 subjects-index-page .subject-list .nav > li > a {

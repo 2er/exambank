@@ -29,8 +29,8 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('users','UsersController',['only' => ['show', 'update', 'edit']]);
-Route::resource('examinations', 'ExaminationsController', ['only' => ['index', 'show']]);
 
-Route::resource('subjects', 'SubjectsController', ['only' => ['show']]);
+Route::post('examinations', 'ExaminationsController@index')->name('examinations.index');
+Route::get('examinations/{examination}', 'ExaminationsController@show')->name('examinations.show');
 
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');

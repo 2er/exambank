@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Examination;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ExaminationRequest;
@@ -14,15 +15,29 @@ class ExaminationsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request, Examination $examination)
+	public function index(Request $request, Subject $subject)
 	{
-	    $examinations = $examination->withOrder($request->order)->paginate(20);
-		return view('examinations.index', compact('examinations'));
+	    $subject_id = $request->subject_id;
+
+	    if (empty($subject_id)) {
+            return redirect()->back()->with('danger','请先选择课程');
+        }
+
+        $subject = $subject->find($subject_id);
+
+	    $examinations = $subject->roundExaminationsGroupBySubjectIds([$subject_id]);
+
+        $subjects = $subject->all();
+
+		return view('examinations.index', compact('examinations', 'subjects', 'subject'));
 	}
 
     public function show(Examination $examination)
     {
-        return view('examinations.show', compact('examination'));
+        $file_path = $examination->file_path;
+        $file_name = pathinfo($file_path,PATHINFO_FILENAME);
+        $html_file_path = public_path('/uploads/files/examinations/'.$file_name.'.html');
+        return file_get_contents($html_file_path);
     }
 
 	public function create(Examination $examination)
