@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Subject;
+use App\Models\Department;
 
 class PagesController extends Controller
 {
@@ -12,10 +12,25 @@ class PagesController extends Controller
         $this->middleware('auth', ['except' => ['permissionDenied']]);
     }
 
-    public function root(Subject $subject)
+    public function root()
     {
-        $subjects = $subject->all();
-        return view('pages.root', compact('subjects'));
+        return view('pages.root');
+    }
+
+    public function plan()
+    {
+        return view('pages.plan');
+    }
+
+    public function select(Department $department)
+    {
+        $departments = $department->with(['branches' => function ($query) {
+            $query->with('subjects');
+        }])->get();
+
+        $departments_json = json_encode($departments->toArray());
+
+        return view('pages.select',compact('departments','departments_json'));
     }
 
     public function permissionDenied()

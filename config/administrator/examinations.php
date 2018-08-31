@@ -49,7 +49,7 @@ return [
             'title' => '试卷文件',
             'type' => 'file',
             'location' => public_path() . '/uploads/files/examinations/',
-            'naming' => 'keep',
+            'naming' => 'random',
             'length' => 20,
             'size_limit' => 2,
             'display_raw_value' => false,

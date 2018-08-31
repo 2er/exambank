@@ -92,36 +92,64 @@ body {
   }
 }
 
-/* Examination Index Page */
-.examinations-show-page, subjects-index-page {
-  .root-select-area {
-    margin-top: 10px;
+/* Root Index Page */
+.root-page {
+  .select-method-area{
+    margin-top: 100px;
+    .root-buttons div:first-child button {
+      float: right;
+      margin-right: 10px;
+    }
   }
-  .subject-list {
-    .nav > li > a {
-      position: relative;
-      display: block;
-      padding: 5px 14px;
-      font-size: 0.9em;
+}
+
+/* Select Plan Page */
+.select-plan-page, .select-select-page {
+  .select-title {
+    margin-top: 40px;
+    h2 {
+      text-align: center;
     }
-    a {
-      color: #444444;
-    }
-    .meta {
-      font-size:0.9em;
-      color: #b3b3b3;
-      a {
-        color: #b3b3b3;
+  }
+  .select-area {
+    margin-top: 100px;
+    .btn-area {
+      text-align: center;
+      button {
+        margin-top: 20px;
       }
     }
-    .badge {
-      background-color: #d8d8d8;
+  }
+}
+
+/* Examination Index Page */
+.examinations-plan-page, .examinations-select-page {
+  .examinations-title {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    h2 {
+      text-align: center;
     }
-    hr {
-      margin-top: 12px;
-      margin-bottom: 12px;
-      border: 0;
-      border-top: 1px solid #dcebf5;
+  }
+  .examinations-content {
+    .panel-heading {
+      font-weight: bold;
+    }
+    .panel-body p {
+      text-align: center;
+      color: $brand-danger;
+    }
+    .table {
+      .del-btn-area {
+        //text-align: center;
+      }
+    }
+    .export-area {
+      margin-top: 20px;
+      text-align: center;
+      button {
+
+      }
     }
   }
 }

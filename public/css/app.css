@@ -8440,47 +8440,71 @@ body {
   margin-bottom: 0px;
 }
 
+/* Root Index Page */
+
+.root-page .select-method-area {
+  margin-top: 100px;
+}
+
+.root-page .select-method-area .root-buttons div:first-child button {
+  float: right;
+  margin-right: 10px;
+}
+
+/* Select Plan Page */
+
+.select-plan-page .select-title,
+.select-select-page .select-title {
+  margin-top: 40px;
+}
+
+.select-plan-page .select-title h2,
+.select-select-page .select-title h2 {
+  text-align: center;
+}
+
+.select-plan-page .select-area,
+.select-select-page .select-area {
+  margin-top: 100px;
+}
+
+.select-plan-page .select-area .btn-area,
+.select-select-page .select-area .btn-area {
+  text-align: center;
+}
+
+.select-plan-page .select-area .btn-area button,
+.select-select-page .select-area .btn-area button {
+  margin-top: 20px;
+}
+
 /* Examination Index Page */
 
-.examinations-show-page .root-select-area,
-subjects-index-page .root-select-area {
-  margin-top: 10px;
+.examinations-plan-page .examinations-title,
+.examinations-select-page .examinations-title {
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
-.examinations-show-page .subject-list .nav > li > a,
-subjects-index-page .subject-list .nav > li > a {
-  position: relative;
-  display: block;
-  padding: 5px 14px;
-  font-size: 0.9em;
+.examinations-plan-page .examinations-title h2,
+.examinations-select-page .examinations-title h2 {
+  text-align: center;
 }
 
-.examinations-show-page .subject-list a,
-subjects-index-page .subject-list a {
-  color: #444444;
+.examinations-plan-page .examinations-content .panel-heading,
+.examinations-select-page .examinations-content .panel-heading {
+  font-weight: bold;
 }
 
-.examinations-show-page .subject-list .meta,
-subjects-index-page .subject-list .meta {
-  font-size: 0.9em;
-  color: #b3b3b3;
+.examinations-plan-page .examinations-content .panel-body p,
+.examinations-select-page .examinations-content .panel-body p {
+  text-align: center;
+  color: #bf5329;
 }
 
-.examinations-show-page .subject-list .meta a,
-subjects-index-page .subject-list .meta a {
-  color: #b3b3b3;
-}
-
-.examinations-show-page .subject-list .badge,
-subjects-index-page .subject-list .badge {
-  background-color: #d8d8d8;
-}
-
-.examinations-show-page .subject-list hr,
-subjects-index-page .subject-list hr {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  border: 0;
-  border-top: 1px solid #dcebf5;
+.examinations-plan-page .examinations-content .export-area,
+.examinations-select-page .examinations-content .export-area {
+  margin-top: 20px;
+  text-align: center;
 }
 

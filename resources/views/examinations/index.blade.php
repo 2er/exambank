@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
-@section('title', isset($subject) ? $subject->name : '试卷列表')
-
 @section('content')
-
+    <div class="row examinations-title">
+        <div class="col-md-12">
+            <h2>抽卷结果列表</h2>
+        </div>
+    </div>
     <div class="row">
-        <div class="col-lg-9 col-md-9 topic-list">
-            @include('examinations._subject_select_area')
+        <div class="col-lg-12 col-md-12 topic-list">
             <div class="panel panel-default">
 
                 {{--<div class="panel-heading">--}}
@@ -16,16 +17,20 @@
                     {{--</ul>--}}
                 {{--</div>--}}
 
-                <div class="panel-body">
-                    {{-- 话题列表 --}}
+                <div class="panel-body examinations-content">
                     @include('examinations._examination_list', ['examinations' => $examinations])
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-3 col-md-3 sidebar">
-            @include('examinations._sidebar')
-        </div>
     </div>
-
 @endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        $('.examinations-content .export-area button').click(function (e) {
+            if ($('#examinations-export-form').serialize() == '') {
+                e.preventDefault();
+            }
+        });
+    </script>
+@stop

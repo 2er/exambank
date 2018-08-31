@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PagesController@root')->name('root');
+Route::get('select/plan','PagesController@plan')->name('select.plan');
+Route::get('select/select','PagesController@select')->name('select.select');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -30,7 +32,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('users','UsersController',['only' => ['show', 'update', 'edit']]);
 
-Route::post('examinations', 'ExaminationsController@index')->name('examinations.index');
+Route::put('examinations', 'ExaminationsController@plan')->name('examinations.plan');
+Route::post('examinations', 'ExaminationsController@select')->name('examinations.select');
+Route::post('examinations/export', 'ExaminationsController@export')->name('examinations.export');
 Route::get('examinations/{examination}', 'ExaminationsController@show')->name('examinations.show');
 
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');

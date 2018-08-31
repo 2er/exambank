@@ -58,4 +58,63 @@ class Examination extends Model
 
         $this->attributes['file_path'] = $path;
     }
+
+    public function roundExaminationBySubjectId($subject_id)
+    {
+        $examination = [];
+
+        $examinations_data = $this->where('subject_id', $subject_id)
+            ->where('hit_count',0)
+            ->get();
+
+        if ($examinations_data->isNotEmpty()) {
+            $examination = $examinations_data->random()->toArray();
+        }
+
+        return $examination;
+    }
+
+    public function getExaminationsByPlan($plan,&$msg)
+    {
+
+        if (empty($plan) || count($plan) <= 1) {
+            $msg = '考试计划数据为空';
+            return false;
+        }
+
+        array_shift($plan);
+
+        $data = [];
+
+        foreach ($plan as $plan_col) {
+
+            $plan_item = [];
+
+            $date_time = trim($plan_col['A']);
+            $subject_name = trim($plan_col['B']);
+            $subject_bn = trim($plan_col['C']);
+            $subject_hour = intval($plan_col['D']);
+
+            $plan_item['subject_id'] = 0;
+            $plan_item['examination'] = [];
+            $plan_item['bn'] = $subject_bn;
+            $plan_item['name'] = $subject_name;
+            $plan_item['subject_hour'] = $subject_hour;
+            $plan_item['date_time'] = $date_time;
+
+            $subject = Subject::where('name',$subject_name)
+                ->where('bn', $subject_bn)
+                ->where('subject_hour', $subject_hour)
+                ->first();
+
+            if ($subject) {
+                $plan_item['subject_id'] = $subject->id;
+                $plan_item['examination'] = $this->roundExaminationBySubjectId($subject->id);
+            }
+
+            $data[] = $plan_item;
+        }
+
+        return $data;
+    }
 }

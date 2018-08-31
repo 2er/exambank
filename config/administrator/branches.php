@@ -3,8 +3,8 @@
 use App\Models\Branch;
 
 return [
-    'title'   => '科室',
-    'single'  => '科室',
+    'title'   => '教研室',
+    'single'  => '教研室',
     'model'   => Branch::class,
 
     'columns' => [
@@ -64,6 +64,6 @@ return [
         'name' => 'required',
     ],
     'messages' => [
-        'name.required' => '请填写科室名称',
+        'name.required' => '请填写教研室名称',
     ],
 ];

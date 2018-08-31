@@ -1,35 +1,59 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Examination;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ExaminationRequest;
+use App\Handlers\FileUploadHandler;
+use App\Handlers\XlsReaderHandler;
 
 class ExaminationsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['show']]);
     }
 
-	public function index(Request $request, Subject $subject)
-	{
-	    $subject_id = $request->subject_id;
+    public function plan(Request $request, FileUploadHandler $uploader, XlsReaderHandler $reader, Examination $examination)
+    {
+        $data = $request->all();
 
-	    if (empty($subject_id)) {
-            return redirect()->back()->with('danger','请先选择课程');
+        if ($request->plan) {
+            $result = $uploader->save($request->plan, 'plans');
+            if ($result) {
+                $data['plan'] = $result['path'];
+                $data['extension'] = $result['extension'];
+            } else {
+                return redirect()->back()->with('danger','考试计划上传失败');
+            }
+        } else {
+            return redirect()->back()->with('danger','请上传考试计划');
         }
 
-        $subject = $subject->find($subject_id);
+        $plan_data = $reader->read($data['plan'],$data['extension']);
+        if ($plan_data == false) {
+            return redirect()->back()->with('danger','考试计划读取失败');
+        }
 
-	    $examinations = $subject->roundExaminationsGroupBySubjectIds([$subject_id]);
+        $examinations = $examination->getExaminationsByPlan($plan_data,$msg);
+        if ($examinations == false) {
+            return redirect()->back()->with('danger',$msg);
+        }
 
-        $subjects = $subject->all();
+        return view('examinations.index', compact('examinations'));
+    }
 
-		return view('examinations.index', compact('examinations', 'subjects', 'subject'));
+	public function select(Request $request, Subject $subject)
+	{
+	    $subject_id = $request->subject_id;
+	    $branch_id = $request->branch_id;
+	    $department_id = $request->department_id;
+
+	    $examinations = $subject->getExaminationsBySelect(compact('subject_id','branch_id','department_id'),$msg);
+
+        return view('examinations.index', compact('examinations'));
 	}
 
     public function show(Examination $examination)
