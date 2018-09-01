@@ -76,9 +76,38 @@ class ExaminationsController extends Controller
         return $html;
     }
 
-    public function export()
+    public function export(Request $request, Examination $examination)
     {
+        $examinations = $request->examinations;
 
+        if (empty($examinations)) {
+            return response()->json([
+                'status' => '0',
+                'msg' => '请先选中导出试卷'
+            ]);
+        }
+
+        $zip_url = $examination->createZipByExaminationIds($examinations);
+        if ($zip_url == false) {
+            return response()->json([
+                'status' => '0',
+                'msg' => '导出失败'
+            ]);
+        }
+
+        // 修改试卷状态
+        $update_res = $examination->updateExaminationsStatus($examinations);
+        if ($update_res == false) {
+            return response()->json([
+                'status' => '0',
+                'msg' => '导出失败'
+            ]);
+        }
+
+        return response()->json([
+            'status' => '1',
+            'url' => $zip_url
+        ]);
     }
 
     /*//

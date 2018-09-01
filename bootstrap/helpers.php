@@ -39,3 +39,26 @@ function model_plural_name($model)
     // 获取子串的复数形式，例如：传参 `user` 会得到 `users`
     return str_plural($snake_case_name);
 }
+
+function deldir($dir) {
+    //先删除目录下的文件：
+    $dh = opendir($dir);
+    while ($file = readdir($dh)) {
+        if($file != "." && $file!="..") {
+            $fullpath = $dir."/".$file;
+            if(!is_dir($fullpath)) {
+                unlink($fullpath);
+            } else {
+                deldir($fullpath);
+            }
+        }
+    }
+    closedir($dh);
+
+    //删除当前文件夹：
+    if(rmdir($dir)) {
+        return true;
+    } else {
+        return false;
+    }
+}

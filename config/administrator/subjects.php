@@ -43,10 +43,6 @@ return [
             'title'    => '未抽中套数',
             'sortable' => false,
         ],
-        'introduction' => [
-            'title'    => '简介',
-            'sortable' => false,
-        ],
         'operation' => [
             'title'  => '管理',
             'sortable' => false,

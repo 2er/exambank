@@ -38,7 +38,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            @can('课程与试卷管理')
+                            @can('内容管理')
                                 <li>
                                     <a href="{{ url(config('administrator.uri')) }}">
                                         <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>

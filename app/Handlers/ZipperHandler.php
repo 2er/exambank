@@ -10,8 +10,5 @@ use Chumper\Zipper\Zipper;
 
 class ZipperHandler
 {
-    public function __construct()
-    {
 
-    }
 }

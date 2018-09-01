@@ -43,7 +43,7 @@
         </div>
     @endforeach
         <div class="panel export-area">
-            <button type="submit" class="btn btn-primary btn-lg">导出选中试卷</button>
+            <button type="button" class="btn btn-primary btn-lg">导出选中试卷</button>
         </div>
     </form>
 @else
