@@ -35,7 +35,7 @@
                         <th scope="row"><input type="checkbox" name="examinations[]" value="{{$examination['examination']['id']}}"></th>
                         <td>{{$examination['examination']['title']}}</td>
                         <td>{{$examination['examination']['created_at']}}</td>
-                        <td class="del-btn-area"><a class="btn btn-primary btn-xs" href="{{route('examinations.show',$examination['examination']['id'])}}" data-id="{{$examination['examination']['id']}}">在线预览</a></td>
+                        <td class="del-btn-area"><a class="btn btn-primary btn-xs" target="_blank" href="{{route('examinations.show',$examination['examination']['id'])}}" data-id="{{$examination['examination']['id']}}">在线预览</a></td>
                     </tr>
                     </tbody>
                 </table>

@@ -41,24 +41,6 @@ class Examination extends Model
         return $query->orderBy('created_at', 'desc');
     }
 
-    public function setFilePathAttribute($path)
-    {
-
-        // 如果不是 `http` 子串开头，那就是从后台上传的，需要补全 URL
-        if ( ! starts_with($path, 'http')) {
-            // 生成pdf文件
-            /*//
-            $source_file = public_path('/uploads/files/examinations/'.$path);
-            $change_obj = new DocChangeHandler();
-            $change_obj->change($source_file,'HTML');
-            //*/
-            // 拼接完整的 URL
-            $path = config('app.url') . "/uploads/files/examinations/$path";
-        }
-
-        $this->attributes['file_path'] = $path;
-    }
-
     public function roundExaminationBySubjectId($subject_id)
     {
         $examination = [];

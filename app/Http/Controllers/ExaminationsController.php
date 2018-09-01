@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Handlers\DocChangeHandler;
 use App\Models\Examination;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -56,14 +57,31 @@ class ExaminationsController extends Controller
         return view('examinations.index', compact('examinations'));
 	}
 
-    public function show(Examination $examination)
+    public function show(DocChangeHandler $changer, Examination $examination)
     {
-        $file_path = $examination->file_path;
+        $file_path = public_path('/uploads/files/examinations/'.$examination->file_path);
         $file_name = pathinfo($file_path,PATHINFO_FILENAME);
-        $html_file_path = public_path('/uploads/files/examinations/'.$file_name.'.html');
-        return file_get_contents($html_file_path);
+        $html_file_path = public_path('/uploads/files/examinations/html/'.$file_name.'.html');
+
+        if (!file_exists($html_file_path)) {
+            $change_res = $changer->change($file_path,'HTML');
+            if ($change_res == false) {
+                return redirect()->back()->with('danger','试卷预览失败');
+            }
+        }
+
+        $html = file_get_contents($html_file_path);
+        $html = preg_replace('/<title>PHPWord<\/title>/','<title>'.$examination->title.'</title>',$html);
+
+        return $html;
     }
 
+    public function export()
+    {
+
+    }
+
+    /*//
 	public function create(Examination $examination)
 	{
 		return view('examinations.create_and_edit', compact('examination'));
@@ -96,4 +114,5 @@ class ExaminationsController extends Controller
 
 		return redirect()->route('examinations.index')->with('message', 'Deleted successfully.');
 	}
+    //*/
 }

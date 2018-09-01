@@ -57,7 +57,7 @@ class DocChangeHandler
         $file_name = pathinfo($sourceFile,PATHINFO_FILENAME);
         $php_word = IOFactory::load($sourceFile);
 
-        $target_file = public_path('/uploads/files/examinations/') . $file_name . '.' . $this->writers[$format];
+        $target_file = public_path('/uploads/files/examinations/html/') . $file_name . '.' . $this->writers[$format];
 
         return $php_word->save($target_file,$format);
 
