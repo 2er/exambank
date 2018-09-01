@@ -2,7 +2,7 @@
     <form id="examinations-export-form" class="form-horizontal" method="POST" action="{{ route('examinations.export') }}" accept-charset="UTF-8">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
     @foreach ($examinations as $examination)
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
             <!-- Default panel contents -->
             <div class="panel-heading">
                 课程编号：{{$examination['bn']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -35,7 +35,7 @@
                         <th scope="row"><input type="checkbox" name="examinations[]" value="{{$examination['examination']['id']}}"></th>
                         <td>{{$examination['examination']['title']}}</td>
                         <td>{{$examination['examination']['created_at']}}</td>
-                        <td class="del-btn-area"><a class="btn btn-primary btn-xs" target="_blank" href="{{route('examinations.show',$examination['examination']['id'])}}" data-id="{{$examination['examination']['id']}}">在线预览</a></td>
+                        <td class="del-btn-area"><a class="btn btn-info btn-xs" target="_blank" href="{{route('examinations.show',$examination['examination']['id'])}}" data-id="{{$examination['examination']['id']}}">在线预览</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -44,6 +44,7 @@
     @endforeach
         <div class="panel export-area">
             <button type="button" class="btn btn-primary btn-lg">导出选中试卷</button>
+            <button type="button" class="btn btn-success btn-lg">导出全部试卷</button>
         </div>
     </form>
 @else

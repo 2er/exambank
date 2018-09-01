@@ -37,6 +37,11 @@
             '    </div>';
 
         $('.examinations-content .export-area button').click(function (e) {
+
+            if ($(this).hasClass('btn-success')) {
+                $("#examinations-export-form input").prop('checked',true);
+            }
+
             if ($("#examinations-export-form input:checked").length === 0) {
                 error_area.html('');
                 $(error_html).appendTo(error_area).find('.error-content').text('请选择要导出的试卷');

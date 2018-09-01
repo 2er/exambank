@@ -13,16 +13,16 @@
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="col-md-12">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-6 col-md-offset-5">
                     <div class="form-group">
                         <label for="plan-file">请选择考试计划文件</label>
                         <input type="file" id="plan-file" name="plan">
                         <p class="help-block">仅支持Excel文件</p>
                     </div>
                 </div>
-                <div class="col-md-3 btn-area">
-                    <button type="submit" class="btn btn-primary" id="select-examinations-btn">点我抽题</button>
-                </div>
+            </div>
+            <div class="col-md-12 btn-area">
+                <button type="submit" class="btn btn-primary">点我抽题</button>
             </div>
         </form>
     </div>

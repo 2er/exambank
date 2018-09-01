@@ -108,10 +108,11 @@ class Examination extends Model
             return false;
         }
 
-        $examinations = $this->leftJoin('subjects', 'examinations.subject_id', '=', 'subjects.id')
+        $examinations = $this->join('subjects', 'examinations.subject_id', '=', 'subjects.id')
             ->join('branches', 'subjects.branch_id', '=', 'branches.id')
             ->join('departments', 'branches.department_id', '=', 'departments.id')
             ->select('examinations.*', 'subjects.bn AS subject_bn', 'subjects.name AS subject_name', 'subjects.subject_hour', 'branches.name AS branch_name', 'departments.name AS department_name')
+            ->whereIn('examinations.id',$data)
             ->get()->toArray();
 
         if (empty($examinations)) {
