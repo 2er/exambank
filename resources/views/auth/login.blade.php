@@ -66,4 +66,11 @@
         </div>
     </div>
 </div>
+<div class="bg">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <img src="{{ asset('image/bg2_1.jpg') }}" />
+        </div>
+    </div>
+</div>
 @endsection
