@@ -212,8 +212,13 @@ class Examination extends Model
                     ->where('hit_count',0)
                     ->count();
 
+                $used_count = Examination::where('subject_id',$examination->subject->id)
+                    ->where('hit_count',1)
+                    ->count();
+
                 $subject = $examination->subject;
                 $subject->left_count = $left_count;
+                $subject->used_count = $used_count;
                 $subject_res = $subject->save();
                 if (!$subject_res) {
                     DB::rollBack();

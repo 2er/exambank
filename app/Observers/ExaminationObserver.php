@@ -14,8 +14,13 @@ class ExaminationObserver
         $left_count = Examination::where('subject_id',$examination->subject->id)
             ->where('hit_count',0)
             ->count();
+
+        $total_count = Examination::where('subject_id',$examination->subject->id)
+            ->count();
+
         $subject = $examination->subject;
         $subject->left_count = $left_count;
+        $subject->total_count = $total_count;
         $subject->save();
     }
 
@@ -24,8 +29,13 @@ class ExaminationObserver
         $left_count = Examination::where('subject_id',$examination->subject->id)
             ->where('hit_count',0)
             ->count();
+
+        $total_count = Examination::where('subject_id',$examination->subject->id)
+            ->count();
+
         $subject = $examination->subject;
         $subject->left_count = $left_count;
+        $subject->total_count = $total_count;
         $subject->save();
     }
 }

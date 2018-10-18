@@ -21,19 +21,19 @@ class SeedRolesAndPermissionsData extends Migration
         app()['cache']->forget('spatie.permission.cache');
 
         // 先创建权限
-        Permission::create(['name' => '课程与试卷管理']);
+        Permission::create(['name' => '内容管理']);
         Permission::create(['name' => '用户与权限管理']);
         Permission::create(['name' => '设置']);
 
         // 创建站长角色，并赋予权限
         $founder = Role::create(['name' => '超级管理员']);
-        $founder->givePermissionTo('课程与试卷管理');
+        $founder->givePermissionTo('内容管理');
         $founder->givePermissionTo('用户与权限管理');
         $founder->givePermissionTo('设置');
 
         // 创建管理员角色，并赋予权限
         $maintainer = Role::create(['name' => '管理员']);
-        $maintainer->givePermissionTo('课程与试卷管理');
+        $maintainer->givePermissionTo('内容管理');
     }
 
     /**
