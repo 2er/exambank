@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '建军工程大学试卷题库')
+@section('title', '陆军工程大学军械士官学校卷库管理系统')
 
 @section('content')
     <div class="row select-title">

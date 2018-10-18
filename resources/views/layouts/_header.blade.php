@@ -12,7 +12,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                @yield('title', '建军工程大学试卷题库')
+                @yield('title', '陆军工程大学军械士官学校卷库管理系统')
             </a>
         </div>
 

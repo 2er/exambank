@@ -21,7 +21,7 @@ return array(
      *
      * @type string
      */
-    'title' => env('APP_NAME', '建军工程大学试卷题库'),
+    'title' => env('APP_NAME', '陆军工程大学军械士官学校卷库管理系统'),
 
     /*
      * The path to your model config directory
